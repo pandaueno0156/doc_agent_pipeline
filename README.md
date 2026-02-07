@@ -10,5 +10,6 @@
 
 ## Status
 Week 1 - Foundations
+
 Week 2 - OCR Parsing
 
