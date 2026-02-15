@@ -13,3 +13,7 @@ __pycache__/
 .DS_Store
 
 .env
+
+mockLLM.py
+
+start-guide.txt
