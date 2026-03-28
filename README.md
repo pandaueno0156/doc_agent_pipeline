@@ -48,6 +48,6 @@ src/
 
 `python -m main`
 
-3. Custom input and output:
+2. Custom input and output:
 
 `python -m main --input data --output output/march-expenses.csv`
