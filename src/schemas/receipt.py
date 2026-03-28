@@ -16,3 +16,6 @@ class Receipt(BaseModel):
 
     need_human_check: bool = Field(..., description="Whether the receipt needs human check")
 
+    file_type: str = Field(..., description="The type of the file (pdf or image)")
+
+    file_path: str = Field(..., description="The path of the file")

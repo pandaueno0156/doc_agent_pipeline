@@ -26,7 +26,10 @@ class OllamaLLM(BaseLLM):
                 - No explanation
                 - No extra text
                 - amount must be integer (no currency symbol)
+                - amount should be in the range of 600 to 5000
+                - amount must be divisible by 10 (last digit must be 0). Taxi fares in Japan never end in 1-9.
                 - date format must be YYYY-MM-DD
+                - reguster_number must be the length of 14 and start with T (T + 13 digits)
 
                 Output MUST be valid JSON only.
 
@@ -45,11 +48,11 @@ class OllamaLLM(BaseLLM):
                 format="json"
             )
 
-        print(f"\nresponse: {response}\n")
+        # print(f"\nresponse: {response}\n")
 
         result = response["message"]["content"]
 
-        print(f"\nresponse[m][c]: {result}\n")
+        # print(f"\nresponse[m][c]: {result}\n")
 
         
         return response["message"]["content"]

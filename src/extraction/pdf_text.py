@@ -3,7 +3,8 @@
 import pdfplumber
 
 def clean_text(text: str) -> str:
-    return text.replace("\n\n", "\n").strip()
+    text = text.replace("\n\n", "\n").strip()
+    return text
 
 def extract_text_from_pdf(pdf_path: str) -> str:
 
@@ -18,7 +19,3 @@ def extract_text_from_pdf(pdf_path: str) -> str:
 
     return text
 
-
-# text = extract_text_from_pdf("tests/data/receipt1.pdf")
-# text = clean_text(text)
-# print(text)
