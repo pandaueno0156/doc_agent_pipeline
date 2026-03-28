@@ -19,17 +19,29 @@ Building this pipeline to automate the extraction and produce a CSV that I can r
 
 # Project structure
 
-`src/
-  config/          -- logging setup and environment settings
-  extraction/      -- text extraction from PDF (pdfplumber) and images (PaddleOCR)
-  io/              -- CSV output writer
-  llm/             -- LLM interface (base class and Ollama implementation)
-  parsers/         -- converts LLM JSON output into Receipt objects
-  pipeline/        -- main pipeline that ties extraction, LLM, validation, and parsing together
-  schemas/         -- Pydantic data models (Receipt)
-  validators/      -- validation rules for register number and amount
-data/              -- input folder for receipt files (PDF, JPG, PNG)
-output/            -- generated CSV files`
+```
+src/
+├── config/
+│   ├── logging_config.py        -- logging setup, suppresses pdfminer warnings
+│   └── settings.py              -- environment variables and app config
+├── extraction/
+│   ├── image_text.py            -- OCR text extraction from images using PaddleOCR
+│   └── pdf_text.py              -- text extraction from PDFs using pdfplumber
+├── io/
+│   └── csv_writer.py            -- writes receipt records to CSV
+├── llm/
+│   ├── base.py                  -- abstract base class for LLM implementations
+│   └── ollama.py                -- Ollama LLM integration with JSON extraction prompt
+├── parsers/
+│   └── receipt_parser.py        -- converts LLM JSON output into Receipt objects
+├── pipeline/
+│   └── receipt_pipeline.py      -- main pipeline tying extraction, LLM, validation, and parsing
+├── schemas/
+│   └── receipt.py               -- Pydantic data model for a taxi receipt
+└── validators/
+    ├── amount.py                -- validates fare is divisible by 10
+    └── register_number.py       -- validates register number format (T + 13 digits)
+```
 
 # How to use
 1. Basic usage (reads from data/, writes to output/receipts.csv):
